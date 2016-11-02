@@ -22,7 +22,7 @@
 
 ## Azure templates (3 min)
 - Azure templates
-- Azure 
+- Azure - deployments - params - keyvault
 
 
 ## Automation & DSC (5 min)

@@ -22,4 +22,4 @@ Configuration ServerConfiguration {
 }
 
 
-ServerConfiguration -ConfigurationData (Import-powershelldatafile .\ConfigData.psd1) 
+#ServerConfiguration -ConfigurationData (Import-powershelldatafile .\ConfigData.psd1) 

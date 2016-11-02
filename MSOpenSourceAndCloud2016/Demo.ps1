@@ -53,15 +53,20 @@ $secretFetch = Get-AzureKeyVaultSecret -VaultName $kv.VaultName -Name MySecret
 # ArmViz
 
 # Start group deployment
-AzureRM\New-AzureRmResourceGroupDeployment -Name "demodeployment$((Get-date).ToString("DDMMyyyy:hhii"))" -ResourceGroupName $resourceGroupname -Mode Incremental -TemplateParameterFile .\Templates\Deploy.param.json -TemplateFile .\Templates\Deploy.json
+AzureRM\New-AzureRmResourceGroupDeployment -Name "demodeployment$((Get-date).ToString("DDMMyyyy:hhii"))" -ResourceGroupName $resourceGroupname -Mode Incremental -TemplateFile .\Templates\ARM\DeployVM.json
 
 
 $amAccount = New-AzureRmAutomationAccount -ResourceGroupName $resourceGroupname -Name 'opensourceautomationaccount' -Location 'west europe' -Plan Free; 
 
 
-Import-AzureRmAutomationDscConfiguration -SourcePath C:\git\haraldfianbakken\azure-demo\MSOpenSourceAndCloud2016\DSC\FirstConfiguration.ps1 -force -Published -Verbose -AutomationAccountName 
+$dscDocument = 'C:\git\haraldfianbakken\azure-demo\MSOpenSourceAndCloud2016\Templates\DSC\ServerConfiguration.ps1'
+$config = Import-PowerShellDataFile (Join-Path (Split-Path $dscDocument) ConfigData.psd1)
 
-$job = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName $resourceGroupname -ConfigurationName 'FirstConfiguration' -Parameters @{} -ConfigurationData (Import-PowerShellDataFile .\DSC\DataFile.psd1) -AutomationAccountName $amAccount.AutomationAccountName -Verbose 
+Import-AzureRmAutomationDscConfiguration -SourcePath $dscDocument -force -Published -Verbose -AutomationAccountName $amAccount.AutomationAccountName -ResourceGroupName $amAccount.ResourceGroupName
+
+$params = @{}
+
+$job = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName $resourceGroupname -ConfigurationName 'ServerConfiguration' -Parameters $params -ConfigurationData $config -AutomationAccountName $amAccount.AutomationAccountName -Verbose 
 
 $job|Get-AzureRmAutomationDscCompilationJob;
 

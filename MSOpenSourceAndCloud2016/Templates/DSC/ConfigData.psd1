@@ -8,5 +8,8 @@
         @{
             NodeName = 'localhost'
         }
+        @{
+            NodeName = 'ServerConfiguration'
+        }
     )
 }
