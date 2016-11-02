@@ -7,9 +7,9 @@ $sa = New-AzureRmStorageAccount -Name $storageAccountName -ResourceGroupName $re
 $sa2 = New-AzureRmStorageAccount -Name $storageAccountName2 -ResourceGroupName $resourceGroupname -SkuName Standard_LRS -Location 'West europe' -Kind Storage ;
 
 
-# Login with second user 
+# Login with second user (other console)
 Get-AzureRMResourceGroup
-# Back to master user
+# Back to master user (this console)
 Get-AzureRmRoleDefinition 
 Get-AzureRmRoleAssignment -ResourceGroupName $resourceGroupname;
 
