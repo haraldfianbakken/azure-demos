@@ -25,7 +25,7 @@
       "type":"string",
       "defaultValue" : "Infrastructure",
       "metadata": {
-        "description": "Subnet dmin username"
+        "description": "Subnetd min username"
       }
     },
     "adminPassword": {
@@ -54,13 +54,13 @@
     "addressPrefix": "10.1.0.0/16",    
     "subnetPrefix": "10.1.0.0/24",
     "publicIPAddressType": "Dynamic",
-    "nic1NamePrefix": "nic1",    
+    "nic1NamePrefix": "nic3",    
     "imagePublisher": "MicrosoftWindowsServer",
     "imageOffer": "WindowsServer",
     "imageSKU": "2012-R2-Datacenter",
     
     "publicIPAddressName": "myPublicIP",    
-    "vmNamePrefix": "myVM",
+    "vmNamePrefix": "myVM2",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('vnetName'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('subnetName'))]",
     "publicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]",    
@@ -116,7 +116,7 @@
       "properties": {
         "ipConfigurations": [
           {
-            "name": "ipconfig1",
+            "name": "ipconfig2",
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
