@@ -1,0 +1,13 @@
+# Some tools
+AzureRM.IotHub
+# Visual studio code (insiders)
+
+# Azure extension pack
+
+
+# Azure IOT ToolKit
+
+-https://github.com/formulahendry/vscode-azure-iot-toolkit
+
+
+# https://github.com/formulahendry/awesome-azure-iot

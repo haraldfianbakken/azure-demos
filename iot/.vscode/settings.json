@@ -1,0 +1,26 @@
+{
+  "iot": {    
+    "Device": {
+      "DeviceName": "harald-dev",
+      "Password": "12345",
+      "ListFilter": null
+    },
+    "Deployment": {
+      "Files": [
+        "index.js",
+        "package.json",
+        "node_modules/**"
+      ],
+      "LaunchBrowserPageNo": "http://undefined:1337/"
+    },
+    "RunCommands": [
+      "iotstartup list",
+      "iotstartup add headless NodeScriptHost",
+      "iotstartup remove headless NodeScriptHost",
+      "deployappx getpackages|findstr -i nodescripthost",
+      "deployappx uninstall NodeScriptHost_1.0.1.0_x86__dnsz84vs3g3zp",
+      "deployappx uninstall NodeScriptHost_1.0.1.0_arm__dnsz84vs3g3zp",
+      "deployappx uninstall NodeScriptHost_1.0.1.0_x64__dnsz84vs3g3zp"
+    ]
+  }
+}
